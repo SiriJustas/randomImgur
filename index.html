@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<style>
+button{
+    height:10%;
+}
+img{
+    width:25%;
+    height:25%;
+    float:left;
+    position:relative;
+    margin:0;
+    padding:0;
+}
+</style>
+<body>
+<button onclick='create();'>PRESS</button>
+<div id="photos">
+</div>
+<script>
+
+var from = 1;
+var elementas = document.getElementById('photos');
+
+function create(){
+    while (elementas.firstChild) {
+    elementas.removeChild(elementas.firstChild);
+    }
+    for(var i=0; i<100; i++){
+        var image = document.createElement("img");
+        image.crossOrigin = 'anonymous';
+        //console.log(s);
+        var s = generate();
+        image.src = 'http://i.imgur.com/'+s+'.png';
+        elementas.appendChild(image)
+    }
+    setTimeout(function(){ tryGen();}, 500);
+}
+
+function tryGen(){
+    var retur=true;
+    var images = document.getElementsByTagName('img');
+    for(var i=0; i<100; i++){
+        var canvas = document.createElement('canvas');
+        canvas.width = images[i].width;
+        canvas.height = images[i].height;
+        canvas.getContext('2d').drawImage(images[i], 0, 0, images[i].width, images[i].height);
+        var pixelData = canvas.getContext('2d').getImageData(100, 100, 1, 1).data;
+        if(pixelData[0]=='34' && pixelData[1]=='34' && pixelData[2]=='34' && pixelData[3]=='255'){
+            var pakartotinis = generate();
+            images[i].src = 'http://i.imgur.com/'+pakartotinis+'.png';
+            retur =  false;
+        }
+    }
+    if(retur==false){
+        setTimeout(function(){ tryGen();}, 500);
+    }
+}
+
+function generate(){
+    var first = Math.floor(Math.random() * 60) + from;
+    var second = Math.floor(Math.random() * 60) + from;
+    var third = Math.floor(Math.random() * 60) + from ;
+    var fourth = Math.floor(Math.random() * 60) + from;
+    var fifth = Math.floor(Math.random() * 60) + from ;
+    var s = symbol(first)+symbol(second)+symbol(third)+symbol(fourth)+symbol(fifth);
+        return s
+}
+
+function symbol(sym){
+    var sk = sym;
+    var b;
+    switch(sk){
+        case 1: 
+            b = 'A';
+            break;
+        case 2: 
+            b = 'B';
+            break;
+        case 3: 
+            b = 'C';
+            break;
+        case 4: 
+            b = 'D';
+            break;
+        case 5: 
+            b = 'E';
+            break;
+        case 6: 
+            b = 'F';
+            break;
+        case 7: 
+            b = 'G';
+            break;
+        case 8: 
+            b = 'H';
+            break;
+        case 9: 
+            b = 'I';
+            break;
+        case 10:
+            b=  'J';
+            break;
+        case 11: 
+            b = 'K';
+            break;
+        case 12: 
+            b = 'L';
+            break;
+        case 13: 
+            b = 'M';
+            break;
+        case 14: 
+            b = 'N';
+            break;
+        case 15: 
+            b = 'O';
+            break;
+        case 16: 
+            b = 'P';
+            break;
+        case 17: 
+            b = 'R';
+            break;
+        case 18: 
+            b = 'S';
+            break;
+        case 19: 
+            b = 'T';
+            break;
+        case 20: 
+            b = 'U';
+            break;
+        case 21: 
+            b = 'V';
+            break;
+        case 22: 
+            b = 'W';
+            break;
+        case 23: 
+            b = 'X';
+            break;
+        case 24: 
+            b = 'Y';
+            break;
+        case 25: 
+            b = 'Z';
+            break;
+        case 26: 
+            b = '1';
+            break;
+        case 27: 
+            b = '2';
+            break;
+        case 28: 
+            b = '3';
+            break;
+        case 29: 
+            b = '4';
+            break;
+        case 30: 
+            b = '5';
+            break;
+         case 31: 
+            b = 'a';
+            break;
+        case 32: 
+            b = 'b';
+            break;
+        case 33: 
+            b = 'c';
+            break;
+        case 34: 
+            b = 'd';
+            break;
+        case 35: 
+            b = 'e';
+            break;
+        case 36: 
+            b = 'f';
+            break;
+        case 37: 
+            b = 'g';
+            break;
+        case 38: 
+            b = 'h';
+            break;
+        case 39: 
+            b = 'i';
+            break;
+        case 40:
+            b=  'j';
+            break;
+        case 41: 
+            b = 'k';
+            break;
+        case 42: 
+            b = 'l';
+            break;
+        case 43: 
+            b = 'm';
+            break;
+        case 44: 
+            b = 'n';
+            break;
+        case 45: 
+            b = 'o';
+            break;
+        case 46: 
+            b = 'p';
+            break;
+        case 47: 
+            b = 'r';
+            break;
+        case 48: 
+            b = 's';
+            break;
+        case 49: 
+            b = 't';
+            break;
+        case 50: 
+            b = 'u';
+            break;
+        case 51: 
+            b = 'v';
+            break;
+        case 52: 
+            b = 'w';
+            break;
+        case 53: 
+            b = 'x';
+            break;
+        case 54: 
+            b = 'y';
+            break;
+        case 55: 
+            b = 'z';
+            break;
+        case 56: 
+            b = '6';
+            break;
+        case 57: 
+            b = '7';
+            break;
+        case 58: 
+            b = '8';
+            break;
+        case 59: 
+            b = '9';
+            break;
+        case 60: 
+            b = '0';
+            break;
+        default:
+            break;
+    }
+    return b;
+}
+
+
+</script>
+
+</body>
+</html>
